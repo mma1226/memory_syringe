@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <title>產品名稱(中文): 一次性使用註射器</title>
+    
+    <link rel="canonical" href="https://storehouse-a.info/poems/philtre.html" />
+    <meta name="description" content="A text and typography-based virtual exhibition showcasing interactive visual poetry inspired by the lexicon of NetHack." />
+    <meta name="robots" content="index,follow" />
+    <meta property="og:title" content="Storehouse-A.info | philtre – s.che" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://storehouse-a.info/poems/philtre.html" />
+    <meta
+      property="og:description"
+      content="A text and typography-based virtual exhibition showcasing interactive visual poetry inspired by the lexicon of NetHack."
+    />
+    <meta
+      property="og:image"
+      content="https://cdn.glitch.com/4790bb7a-7390-495d-8b97-d01f2ef4da55%2Fbuffer_ring.gif?v=1622088943907"
+    />
+    <meta name="twitter:card" content="summary" />
+    
+    <style>
+      html {
+        height: 100%;
+      }
+      
+      body {
+        top: 20vh;
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Menlo", monospace;
+        font-size: 14px;
+      }
+      
+      .poem {
+        text-align: center;
+        white-space: pre-line;
+      }
+      
+      .visible {
+        visibility: visible;
+      }
+
+      .label {
+        font-size: 9px;
+      }
+    </style>
+    
+  </head>
+  <body>
+    <pre id="poem" class="poem">
+ <span class="line">沒有了音樂就</span>
+    <span class="line">退化</span>
+    <span class="line">耳朵</span>
+   <span class="line">沒有了</span>
+ <span class="line">戒律就滅掉</span>
+ <span class="line">燭火像回到</span>
+ <span class="line">誤解照相術</span>
+ <span class="line">的年代你攝</span>
+ <span class="line">取我的靈魂</span>
+ <span class="line">沒有了剃刀</span>
+ <span class="line">就封鎖語言</span>
+ <span class="line">沒有了心臟</span>
+    <span class="line">卻</span>
+    <span class="line">活</span>
+    <span class="line">了</span>
+    <span class="line">九</span>
+    <span class="line">年</span>
+
+
+<!-- 沒有了音樂
+就退化耳朵
+沒有了戒律
+就滅掉燭火
+像回到誤解
+照相術的年代
+你攝取我的
+靈魂
+沒有了剃刀
+就封鎖語言
+沒有了心臟
+卻活了九年 -->
+
+<div class="label">
+  <br>
+  <br>
+  產品名稱(中文): 一次性使用註射器
+  产品名称(英文): Single use syringe
+  <span id="registration">注册号国食药监械(进)字2003第3150770号(更)</span>
+<br>
+  产品适用范围与一次性使用注射针配套用于皮下、肌肉、静脉注射药液、抽血或溶药。
+  <br>
+  有效期截止日2023.03.07</div>
+
+</pre>
+   
+    </body>
+    <script>
+      const texts = [
+      "沒有了音樂就",
+      "退化",
+      "耳朵",
+      "沒有了",
+      "戒律就滅掉",
+      "燭火像回到",
+      "誤解照相術",
+      "的年代你攝",
+      "取我的靈魂",
+      "沒有了剃刀",
+      "就封鎖語言",
+      "沒有了心臟",
+      "卻",
+      "活",
+      "了",
+      "九",
+      "年"
+      ];
+      
+      const poem = document.getElementById("poem");
+      const lines = document.getElementsByClassName("line");
+      
+      let isMouseDown = false;
+      let hasMouseMoved = false;
+      
+      // replace each line with '!' on mousedown
+      poem.addEventListener("mousedown", () => {
+        isMouseDown = true;
+        hasMouseMoved = false;
+        exclamatise();
+      });
+      
+      // scramble characters on mousemove (if mousedown)
+      document.addEventListener("mousemove", event => {
+        event.preventDefault();
+        if (isMouseDown) {
+          hasMouseMoved = true;
+        }
+      });
+      
+      // scramble on mouseup
+      document.addEventListener("mouseup", () => {
+        isMouseDown = false;
+        if (hasMouseMoved) {
+          scramble();
+          hasMouseMoved = false;
+        }
+      })
+      
+      function exclamatise() {
+        for (let line of lines) {
+          let text = line.textContent;
+          let newText = "█".repeat(text.length);
+          line.textContent = newText;
+        }
+      }
+      
+      function scramble() {
+        for (let i = 0; i < lines.length; i++) {
+          let text = texts[i];
+          let characters = text.split("");
+          characters.sort(() => Math.random() - 0.5); // shuffle
+          let newText = characters.join("");
+          lines[i].textContent = newText;
+        }
+      }
+    </script>
+    
+  </body>
+</html>
